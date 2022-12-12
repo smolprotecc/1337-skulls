@@ -1,0 +1,145 @@
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Inconsolata:200,400,700&amp;display=swap" 
+  media="all">
+<style>
+body {
+  border: 0px;
+  margin: 0px;
+  background-image: url('BG.png');
+  background-size: cover;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAK1JREFUSInt1b0KgzAUhuHPkDWQKwjenGOX7p26d3H05kquIJC97VA+wZbY/B2nvuAi6DmPIuL8uDwhmIo+YLqfxIYo4yyMs5CSqOgDeEhIVoGUZEhtvYzz0GXA3sY3dW0ekhSwVsmugLVIfgpYrSRLwGok2QJWKikSsBJJsYDlSrRxtub+2enow+bEMs5fqpZvYSPgs+2pWrf93LKXQqculH43AN4Kyb/dv2N6AZ1+V4TDar/WAAAAAElFTkSuQmCC),auto;
+}
+#content {
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(7px);
+}
+#output {
+  background: rgba( 1, 1, 1, 0.43 );
+  font-family: 'Inconsolata';
+  font-size: 17pt;
+  color: white;
+  color: rgb(55,171,51);
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 18px*2);
+  height: 55%;
+  width: 65%;
+  transform: translate( -50%, -50% );
+  white-space: pre-wrap;
+  letter-spacing: 0em;
+  line-height: 1.1em;
+  padding: 18px;
+  
+  /* Styling */
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAQdJREFUeJzt2kEKwkAQBEAV35H/v8uXeBEcD8FdSOhJUnXyEGKgmSY7ersBAAAAAAAAAAAAAJzBPf0AH0v5/DrRd/31SD/A1QkgLFlBy/9LfszWxd7334QJCBNA2DP9ABNG3l5mayfOBIQJIOxIFTTyllKvOUQdmYAwAYRdZRe0Vkd2QVcngLAuFTSrbaXMMgFhAgjrso4eqY491svxX8dMQJgAwpK7oLW9zezOpxqpqXjtVCYgTABhXQ5iex+s2h7cTECYAMK6VFA1UhdbXRNnAsIEEHakCtqKCuJLAGEdK6jaqo5a1U5lAsIEENa9gqrZf0e3rZ3KBIQJAAAAAAAAAAAAAOA83l36Gi0bf4M5AAAAAElFTkSuQmCC),radial-gradient(rgba(0,75,0,.75),black 120%);
+  background-size: cover;
+  background-position: center;
+  border: solid 5px rgb(72,221,0);
+  border-radius: 4px;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAUVJREFUWIXtVzsOwjAMfUFZkTgB4ozsTOwsjNyOEyCxExZSOY5fGjdIDPRJVZXPc23HdlygRPo8o+iWEyTp+DoBAC6bs15zfdwjJ2YSADzvj0IQUdT8qBwYcig/QGjMMGPJED8ClcZujPAjAGz3uyEFRvirB37ugRyZCQBU/lr7GIo0NORQfhQbkrLEIunqFtQbnXLoYiLzgJHvjfxuySlQVMIGwaqUck3ziqNtKVJUQmLR0krXdSdYWVBZtCDKWx6rFAi3w1VnQaFEznOdHcQz2nJgYRZMSpCo1vszh+03YfYDGeLsWDDJeU+WTIhy0BHlrA50n7mGaRGxxD1vyK8Q1diKhQnO+a6WrqvieeHpKbUHAIzfjh40S6/XE56zzzA9gJlYmIGrne+651mf4Kl4DMwDUiC73133/ijYr9a3fuVW/DHepxvGgBhAO2YAAAAASUVORK5CYII=),auto;
+}
+#input-container {
+  position: absolute;
+  font-family: 'Inconsolata';
+  font-size: 17pt;
+  left: 50%;
+  top: calc(50% + 55%/2 + 18px - 18px*2);
+  transform: translate(-50%, 0%);
+  width: 65%;
+  padding: 18px;
+  height: 8ch;
+  white-space: pre-wrap;
+  outline: none;
+  overflow: hidden;
+  background: rgba(255,255,255,0.337);
+  backdrop-filter: blur(13px);
+  border-right: solid 5px rgb(72,221,0);
+  border-left: solid 5px rgb(72,221,0);
+  border-bottom: solid 5px rgb(72,221,0);
+  border-top: solid 3px rgba(72,221,0,0.337);
+}
+br {
+  height: 1.4em;
+}
+#input {
+  position: relative;
+  font-family: 'Inconsolata';
+  font-size  : 13pt;
+  width: calc(100%);
+  height: 100%;
+  opacity: 43%;
+  padding: 13px;
+  color  : rgb(114,254,125);
+  background: rgba( 1, 1, 1, 0.889 );
+  border : 0px solid rgba(1,1,1,0);
+  outline: none;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAF1JREFUSIljLPpX+58BD+hjambEJ08IsHx+9IES/aSBon+1/wn5iFTAgsyhhW9QLOCVE6CtBaM+IGjBqA8IWjDqA4IW0MIHjKkPcvEWbrMVJlNWXNPC1aNgFAwxAADSLSMTptUKrAAAAABJRU5ErkJggg==),auto;
+};
+
+</style>
+<body>
+<div id='content'>
+<div id='output'></div>
+<div id='input-container'><textarea id='input'></textarea></div>
+</div>
+</body>
+<script>
+
+transposer = {
+  A: '4',
+  B: '8',
+  C: 'C',
+  D: 'D',
+  E: '3',
+  F: 'F',
+  G: '9',
+  H: 'H',
+  I: '1',
+  J: 'J',
+  K: 'K',
+  L: '1',
+  M: 'M',
+  N: 'N',
+  O: '0',
+  P: 'P',
+  Q: 'Q',
+  R: '2',
+  S: '5',
+  T: '7',
+  U: 'U',
+  V: 'V',
+  W: 'W',
+  X: 'X',
+  Y: 'Y',
+  Z: '2',
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  let input = document.querySelector('#input')
+  let output = document.querySelector('#output')
+  
+  input.focus()
+  input.select()
+
+  input.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      // input.value += '<br/>'
+    }
+  })
+
+  input.addEventListener('input', (e) => {
+    let t = input.value.split('')
+    let u = t.map(f => {
+      let smol = f == f.toLowerCase()
+      f = f.toUpperCase() ? f.toUpperCase() : f
+      let g = transposer[f] ? transposer[f] : f
+      return smol ? g.toLowerCase() : g
+    })
+    t = u.join('').replace(/\r/g,'').replace(/\n/g,'\n')
+    output.innerHTML = t
+  })
+})
+
+</script>
